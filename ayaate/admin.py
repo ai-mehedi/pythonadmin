@@ -70,6 +70,15 @@ class AffiliateInline(admin.TabularInline):  # or use admin.StackedInline for a 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "category":
+            kwargs["queryset"] = Category.objects.filter(topic='product')
+            
+        if db_field.name == "subcategory":
+            kwargs["queryset"] = Subcategory.objects.filter(topic='product')
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+    
+   
     form=ProductAdminForm
     list_display = ('title', 'slug', 'price', 'offerprice', 'category', 'subcategory', 'user', 'created_at', 'updated_at')
     search_fields = ('title', 'keyword', 'description')
@@ -85,6 +94,15 @@ class AffiliateAdmin(admin.ModelAdmin):
     
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
+  
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "category":
+            kwargs["queryset"] = Category.objects.filter(topic='post')
+            
+        if db_field.name == "subcategory":
+            kwargs["queryset"] = Subcategory.objects.filter(topic='post')
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+    
     form = PostAdminForm
     list_display = ('title', 'slug', 'category', 'subcategory', 'views', 'status', 'created_at')
     search_fields = ('title', 'description', 'content')

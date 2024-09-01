@@ -20,6 +20,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, blank=True)
     description = models.TextField(blank=True, null=True)
+    keyword = models.TextField(blank=True, null=True)
     content = models.TextField()
     image = models.ImageField(upload_to='posts/')
     category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)

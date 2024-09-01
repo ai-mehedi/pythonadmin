@@ -24,9 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-gzf4#kcdsx5h2tf*yyz0%p3&kg*3xyia-%je02qu4e&grpesw('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['yourdomain.com', 'your_ip_address']
+
 
 
 # Application definition
@@ -87,13 +89,13 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #     }
 # }
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "djnagodb",
-        "USER": "postgres",
-        "PASSWORD": "mehedi000",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ayaate_db',
+        'USER': 'ayaate_user',
+        'PASSWORD': 'ayaate_pass',
+        'HOST': 'db',  # This should match the Docker service name for PostgreSQL
+        'PORT': '5432',
     }
 }
 
@@ -142,6 +144,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
 
 # Media files (uploaded files)
 MEDIA_URL = '/media/'
