@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-gzf4#kcdsx5h2tf*yyz0%p3&kg*3xyia-%je02qu4e&grpesw(
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['yourdomain.com', 'your_ip_address']
+ALLOWED_HOSTS = ['admin.ayaate.xyz', '54.183.34.215']
 
 
 
